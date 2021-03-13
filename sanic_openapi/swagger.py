@@ -151,6 +151,15 @@ def build_spec(app, loop):
 
             # Parameters - Path & Query String
             route_parameters = []
+            for parameter in route.parameters:
+                route_parameters.append(
+                    {
+                        **serialize_schema(parameter.cast),
+                        "required": True,
+                        "in": "path",
+                        "name": parameter.name,
+                    }
+                )
 
             for consumer in route_spec.consumes:
                 route_param = {}
