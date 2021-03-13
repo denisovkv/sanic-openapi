@@ -188,7 +188,7 @@ def build_spec(app, loop):
 
                 if route_param["in"] == "path":
                     route_param["required"] = True
-                    for i, parameter in route_parameters:
+                    for i, parameter in enumerate(route_parameters):
                         if parameter["name"] == route_param["name"]:
                             route_parameters.pop(i)
                             break
